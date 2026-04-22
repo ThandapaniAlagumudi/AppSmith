@@ -4,7 +4,7 @@ export default {
 		const response = await fetch(
 			"https://enterpriseautomation.app.n8n.cloud/webhook/1f02a226-642c-443d-82ab-ca4cd5d1c1ab",
 			{
-				method: "GET"
+				method: "POST"
 			}
 		);
 
