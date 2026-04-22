@@ -2,6 +2,7 @@
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 14,
+  "bottomRowBeforeCollapse": 14,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
@@ -12,11 +13,17 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "onClick"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicTriggerPathList": [
@@ -27,7 +34,7 @@
   "isDefaultClickDisabled": true,
   "isDisabled": false,
   "isLoading": false,
-  "isVisible": true,
+  "isVisible": "{{appsmith.store.role=='admin'}}",
   "key": "n4eqi2udma",
   "leftColumn": 28,
   "minWidth": 120,
@@ -37,6 +44,8 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onClick": "{{showModal('BPModal')\nutils.fetchPartners();}}",
+  "originalBottomRow": 14,
+  "originalTopRow": 10,
   "parentColumnSpace": 15.678124999999998,
   "parentId": "yxchheu2tb",
   "parentRowSpace": 10,
@@ -48,6 +57,7 @@
   "rightColumn": 44,
   "text": "Get BP Data",
   "topRow": 10,
+  "topRowBeforeCollapse": 10,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "am5l8vma9n",
