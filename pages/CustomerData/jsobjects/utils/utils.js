@@ -1,11 +1,35 @@
 export default {
-	
+
+	fetchPartners: async () => {
+		const response = await fetch(
+			"https://enterpriseautomation.app.n8n.cloud/webhook/1f02a226-642c-443d-82ab-ca4cd5d1c1ab",
+			{
+				method: "GET"
+			}
+		);
+
+		const data = await response.json();
+
+		return data.map(item => {
+			return {
+				ID: item.BusinessPartner,
+				Name: item.BusinessPartnerName.trim(),
+				City: item.City,
+				Email: item.EMailAddress,
+				Phone: item.tel_number,
+				Type: item.ResultType,
+				Address: `${item.Street || ''} ${item.Street2 || ''} ${item.Street3 || ''}`.trim()
+			};
+		});
+	},
+
+
 	idConverter: (num) => {
 		let str = num.toString();
 		let leadingZeros = "00000".substring(0, 5 - str.length);
 		return 'C' + leadingZeros + str;
 	},
-	
+
 	getCustomers: async () => {
 		const customers = await getCustomers.run();
 
@@ -21,7 +45,7 @@ export default {
 			}
 		})
 	},
-	
+
 	//Func
 	getCustomerOrders: async () => {
 		const customerOrders = await getCustomerOrders.run();
@@ -35,7 +59,7 @@ export default {
 				Status: o.label
 			}
 		})
-		
+
 		return data;
 	},
 
@@ -51,22 +75,22 @@ export default {
 		}
 		return 'RGB(255, 165, 0)'
 	},
-	
+
 	addCustomer: async () => {
 		const person = await createPerson.run()
-		
+
 		await createAccount.run({
 			personId: person[0].id
 		})
-		
+
 		await createLocation.run({
 			personId: person[0].id
 		})
-		
+
 		closeModal('mdl_addCustomer');
-		
+
 		await this.getCustomers();
-		
+
 		showAlert('Customer created!', 'success');
 	}
 }
