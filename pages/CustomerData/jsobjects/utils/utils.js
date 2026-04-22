@@ -22,6 +22,7 @@ export default {
 		})
 	},
 	
+	//Func
 	getCustomerOrders: async () => {
 		const customerOrders = await getCustomerOrders.run();
 
@@ -36,5 +37,36 @@ export default {
 		})
 		
 		return data;
+	},
+
+	statusColor: (status) => {
+		if (status === 'CANCELLED') {
+			return 'RGB(255, 0, 0)'
+		};
+		if (status === 'UNFULFILLED' || status === 'PACKED') {
+			return 'RGB(255, 165, 0)';
+		};
+		if (status === 'SHIPPED' || status === 'DELIVERED') {
+			return 'RGB(0, 128, 0)'
+		}
+		return 'RGB(255, 165, 0)'
+	},
+	
+	addCustomer: async () => {
+		const person = await createPerson.run()
+		
+		await createAccount.run({
+			personId: person[0].id
+		})
+		
+		await createLocation.run({
+			personId: person[0].id
+		})
+		
+		closeModal('mdl_addCustomer');
+		
+		await this.getCustomers();
+		
+		showAlert('Customer created!', 'success');
 	}
 }
