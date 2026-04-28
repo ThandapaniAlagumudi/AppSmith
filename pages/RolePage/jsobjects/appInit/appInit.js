@@ -1,7 +1,6 @@
 export default {
-  init: async () => {
-		// prevent re-running
-		if (appsmith.store.appInitialized) return;
+	init: async () => {
+		await storeValue("role", undefined);
 
 		const role =
 					appsmith.user.email?.toLowerCase() === "ita.ta@fullsteam.online"
@@ -9,17 +8,16 @@ export default {
 		: "user";
 
 		await storeValue("role", role);
-		await storeValue("appInitialized", true);
 	}
 	,
 	checkAccess() {
 		if (appsmith.mode === "EDIT") {
-      return;
-    }
+			return;
+		}
 
-    if (appsmith.store.role === "admin") {
-      showAlert("Access denied", "error");
-      navigateTo("CustomerData");
-    }
-  }
+		if (appsmith.store.role === "admin") {
+			showAlert("Access denied", "error");
+			navigateTo("CustomerData");
+		}
+	}
 };
