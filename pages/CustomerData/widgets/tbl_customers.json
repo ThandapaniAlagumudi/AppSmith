@@ -358,7 +358,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 59,
   "searchKey": "",
-  "serverSidePaginationEnabled": true,
+  "serverSidePaginationEnabled": false,
   "tableData": "{{ utils.getCustomers.data }}",
   "textSize": "0.875rem",
   "topRow": 4,

@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "69e74cca833ce3305690f08f_ccadf1be-a53e-4b0f-a22e-f441916cee8b",
-  "id": "RolePage_appInit.init",
+  "gitSyncId": "69e74cca833ce3305690f08f_7aa7cf2b-fc5d-4bf1-a062-b379833c5417",
+  "id": "RolePage_appInit.checkAccess",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "appInit.init",
-    "name": "init",
+    "fullyQualifiedName": "appInit.checkAccess",
+    "name": "checkAccess",
     "pageId": "RolePage",
     "runBehaviour": "ON_PAGE_LOAD",
     "userSetOnLoad": true

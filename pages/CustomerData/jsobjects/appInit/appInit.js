@@ -4,7 +4,7 @@ export default {
 		if (appsmith.store.appInitialized) return;
 
 		const role =
-					appsmith.user.email?.toLowerCase() === "ita.ta@fullsteam.online"
+					appsmith.user.email?.toLowerCase() === "itaa.ta@fullsteam.online"
 		? "admin"
 		: "user";
 

@@ -1,0 +1,1 @@
+INSERT INTO public.account ("external_id","customer_id","company.id","account_manager","created","updated") VALUES ('{{(JSONForm1.formData || {}).external_id}}','{{(JSONForm1.formData || {}).customer_id}}','{{(JSONForm1.formData || {}).company.id}}','{{(JSONForm1.formData || {}).account_manager}}','{{(JSONForm1.formData || {}).created}}','{{(JSONForm1.formData || {}).updated}}')

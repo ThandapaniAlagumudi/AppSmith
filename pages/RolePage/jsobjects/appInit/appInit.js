@@ -1,18 +1,25 @@
 export default {
   init: async () => {
-    // reset properly
-    await storeValue("role", null);
-    await storeValue("appInitialized", false);
+		// prevent re-running
+		if (appsmith.store.appInitialized) return;
 
-    // now logic runs
-    const role =
-      appsmith.user.email?.toLowerCase() === "ita.ta@fullsteam.online"
-        ? "admin"
-        : "user";
+		const role =
+					appsmith.user.email?.toLowerCase() === "ita.ta@fullsteam.online"
+		? "admin"
+		: "user";
 
-    await storeValue("role", role);
-    await storeValue("appInitialized", true);
+		await storeValue("role", role);
+		await storeValue("appInitialized", true);
+	}
+	,
+	checkAccess() {
+		if (appsmith.mode === "EDIT") {
+      return;
+    }
 
-    console.log("role:", role);
+    if (appsmith.store.role === "admin") {
+      showAlert("Access denied", "error");
+      navigateTo("CustomerData");
+    }
   }
 };
