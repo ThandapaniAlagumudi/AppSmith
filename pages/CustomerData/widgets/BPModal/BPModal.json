@@ -8,7 +8,7 @@
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 660,
+      "bottomRow": 640,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -29,7 +29,7 @@
       "leftColumn": 0,
       "maxDynamicHeight": 9000,
       "minDynamicHeight": 4,
-      "minHeight": 668,
+      "minHeight": 640,
       "minWidth": 450,
       "mobileBottomRow": 240,
       "mobileLeftColumn": 0,
@@ -58,7 +58,7 @@
   ],
   "dynamicHeight": "FIXED",
   "dynamicTriggerPathList": [],
-  "height": 668,
+  "height": 640,
   "isCanvas": true,
   "isLoading": false,
   "key": "gfytksn7qa",
@@ -81,5 +81,5 @@
   "version": 2,
   "widgetId": "pjtx8pwula",
   "widgetName": "BPModal",
-  "width": 792
+  "width": 1027.8999999999999
 }

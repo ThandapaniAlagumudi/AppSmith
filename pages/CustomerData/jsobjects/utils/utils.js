@@ -1,27 +1,33 @@
 export default {
 
 	fetchPartners: async () => {
-		const response = await fetch(
-			"https://enterpriseautomation.app.n8n.cloud/webhook/1f02a226-642c-443d-82ab-ca4cd5d1c1ab",
-			{
-				method: "POST"
-			}
-		);
+    try {
+      await storeValue("partnersLoading", true);
 
-		const data = await response.json();
+      const response = await fetch(
+        "https://enterpriseautomation.app.n8n.cloud/webhook/1f02a226-642c-443d-82ab-ca4cd5d1c1ab",
+        { method: "POST" }
+      );
 
-		return data.map(item => {
-			return {
-				ID: item.BusinessPartner,
-				Name: item.BusinessPartnerName.trim(),
-				City: item.City,
-				Email: item.EMailAddress,
-				Phone: item.tel_number,
-				Type: item.ResultType,
-				Address: `${item.Street || ''} ${item.Street2 || ''} ${item.Street3 || ''}`.trim()
-			};
-		});
-	},
+      const data = await response.json();
+
+      const mapped = data.map(item => ({
+        ID: item.BusinessPartner,
+        Name: item.BusinessPartnerName.trim(),
+        City: item.City,
+        Email: item.EMailAddress,
+        Phone: item.tel_number,
+        Type: item.ResultType,
+        Address: `${item.Street || ''} ${item.Street2 || ''} ${item.Street3 || ''}`.trim()
+      }));
+
+      await storeValue("partners", mapped);
+    } catch (e) {
+      showAlert("Failed to fetch partners", "error");
+    } finally {
+      await storeValue("partnersLoading", false);
+    }
+  },
 
 
 	idConverter: (num) => {

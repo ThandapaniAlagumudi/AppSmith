@@ -13,6 +13,11 @@
       "key": "borderRadius"
     }
   ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -31,7 +36,7 @@
   "mobileRightColumn": 64,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onClick": "{{closeModal(BPModal.name);}}",
+  "onClick": "{{ storeValue(\"partners\", []) \ncloseModal(BPModal.name)}}",
   "parentId": "moyfb2ghcl",
   "renderMode": "CANVAS",
   "responsiveBehavior": "hug",
